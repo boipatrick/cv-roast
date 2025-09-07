@@ -2,7 +2,7 @@ import os
 import uuid
 from typing import Tuple
 from fastapi import UploadFile, HTTPException, status
-import PyPDF2
+from pypdf import PdfReader
 import pdfplumber
 from docx import Document
 from ..config import get_settings
@@ -68,7 +68,7 @@ class FileProcessor:
         except Exception :
             # Fallback to PyPDF2
             with open(file_path, 'rb') as file:
-                pdf_reader = PyPDF2.PdfReader(file)
+                pdf_reader = PdfReader(file)
                 for page in pdf_reader.pages:
                     text += page.extract_text() + "\n"
         
