@@ -5,7 +5,7 @@ from fastapi import UploadFile, HTTPException, status
 import PyPDF2
 import pdfplumber
 from docx import Document
-from .config import get_settings
+from ..config import get_settings
 
 settings = get_settings()
 
@@ -65,7 +65,7 @@ class FileProcessor:
                     page_text = page.extract_text()
                     if page_text:
                         text += page_text + "\n"
-        except:
+        except Exception :
             # Fallback to PyPDF2
             with open(file_path, 'rb') as file:
                 pdf_reader = PyPDF2.PdfReader(file)
