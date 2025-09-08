@@ -1,5 +1,5 @@
 import openai
-import anthropic
+## import anthropic
 from typing import Dict, Any
 from ..config import get_settings
 
@@ -10,8 +10,8 @@ class LLMService:
         self.settings = settings
         if settings.OPENAI_API_KEY:
             openai.api_key = settings.OPENAI_API_KEY
-        if settings.ANTHROPIC_API_KEY:
-            self.anthropic_client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+        ##if settings.ANTHROPIC_API_KEY:
+            ##self.anthropic_client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
     
     async def generate_roast(self, cv_text: str, roast_level: str, focus_areas: list = None) -> Dict[str, Any]:
         """Generate a roast based on CV content"""
